@@ -83,9 +83,3 @@ Looking ahead, ACME Inc. plans to expand its range of automated baking machines.
 
 The Apple Pie Master from ACME Inc. represents a significant advancement in the field of culinary technology. By automating the process of baking apple pies, this machine not only makes baking more accessible but also sets a new standard for the integration of technology in traditional cooking practices. As more consumers and businesses adopt this technology, it could well redefine our cooking experiences and expectations.
 """
-
-print("Count of the word 'the':", count_specific_word(str, 'the'))
-print("Most common word:", identify_most_common_word(str))
-print("Average word length:", calculate_average_word_length(str))
-print("Number of paragraphs:", count_paragraphs(str))
-print("Number of sentences:", count_sentences(str))
