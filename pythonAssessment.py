@@ -1,7 +1,8 @@
 def count_specific_word(str, word):
     if not str or not word:
         return 0
-    return str.lower().split().count(word.lower())
+    cleaned_words = [''.join(char for char in w if char.isalnum()) for w in str.lower().split()]
+    return cleaned_words.count(word.lower())
 
 
 def identify_most_common_word(str):
@@ -42,7 +43,13 @@ def count_sentences(str):
     if not str.strip():
         return 1
 
-    return sum(1 for char in str if char in '.!?')
+    count = 0
+    i = 0
+    while i < len(str):
+        if str[i] in '.!?':
+            count += 1
+        i += 1
+    return count
 
 str = """ACME Inc. Unveils Revolutionary Apple Pie Machine, Transforming Baking with Automation
 
