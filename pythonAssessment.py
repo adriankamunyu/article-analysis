@@ -1,12 +1,8 @@
-def count_specific_word(str, target_word):
-    count = 0
-    words = str.split()
-    for word in words:
-        if word == target_word:
-            count += 1
-        else:
-            count = 0
-    return count
+def count_specific_word(str, word):
+    if not str or not word:
+        return 0
+    return str.lower().split().count(word.lower())
+
 
 def identify_most_common_word(str):
     word_count = {}
@@ -23,13 +19,17 @@ def identify_most_common_word(str):
     return most_common_word
 
 def calculate_average_word_length(str):
-    words = str.split()
-    if len(words) == 0:
+    if not str.strip():
         return 0
-    else:
-        total_length = sum(len(word) for word in words)
-        average_length = total_length / len(words) if words else 0
-    return average_length
+
+    words = str.split()
+    cleaned_words = [''.join(char for char in word if char.isalnum()) for word in words]
+    cleaned_words = [word for word in cleaned_words if word]
+
+    if not cleaned_words:
+        return 0
+
+    return sum(len(word) for word in cleaned_words) / len(cleaned_words)
 
 def count_paragraphs(str):
     if len(str.strip()) == 0:
@@ -39,11 +39,10 @@ def count_paragraphs(str):
         return len(paragraphs)
 
 def count_sentences(str):
-    if len(str.strip()) == 0:
+    if not str.strip():
         return 1
-    else:
-        sentences = str.split('.')
-        return len(sentences) - 1 if sentences[-1] == '' else len(sentences)
+
+    return sum(1 for char in str if char in '.!?')
 
 str = """ACME Inc. Unveils Revolutionary Apple Pie Machine, Transforming Baking with Automation
 
